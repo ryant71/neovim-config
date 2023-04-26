@@ -61,3 +61,9 @@ vim.keymap.set("n", "C", "c$")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+
+
+vim.keymap.set("n", "<Leader>f", "<cmd>lua open_file_popup()<CR>")
+
+
