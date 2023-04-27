@@ -17,12 +17,15 @@
         ├── init.lua
         ├── lua
         │   └── scurra
+        │       ├── functions.lua
         │       ├── init.lua
         │       ├── packer.lua
         │       ├── remap.lua
         │       └── set.lua
-        └── plugin
-            └── packer_compiled.lua
+        ├── plugin
+        │   └── packer_compiled.lua
+        └── remaps.txt
+
 ## lsp-zero
 
 For the options I've added, I installed the following:

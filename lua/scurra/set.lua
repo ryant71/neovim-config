@@ -1,7 +1,10 @@
+vim.g.mapleader = " "
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -26,15 +29,13 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
+
 vim.opt.isfname:append("@-@")
+vim.opt.iskeyword:append("-")
 
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-vim.g.mapleader = " "
-
--- vim.opt. = 
-
 vim.opt.cmdheight = 2
 
 -- Don't pass messages to |ins-completion-menu|.
@@ -47,7 +48,5 @@ vim.opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
-vim.opt.iskeyword:append("-")
 
 vim.opt.paste = true

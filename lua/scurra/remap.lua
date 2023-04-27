@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.g.mapleader = " "
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -12,10 +12,14 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("n", "<leader>y", [["+y]])
+vim.keymap.set("v", "<leader>y", [["+y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("v", "<leader>Y", [["+Y]])
+
+vim.keymap.set("n", "<leader>d", [["_d]])
+vim.keymap.set("v", "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -34,8 +38,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/scurra/packer.lua<CR>");
 
----
----
+
+
 vim.keymap.set("n", "<leader>.", "<cmd>set cursorline!<CR>")
 vim.keymap.set("n", "<leader>,", "<cmd>set cursorcolumn!<CR>")
 
@@ -52,7 +56,8 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 -- vim.keymap.set("n", "cc",  "<cmd>silent cc :setlocal noai<CR>cc:setlocal ai<CR>")
 
 -- make cc cut a line without jumping into INSERT mode afterwards
-vim.keymap.set("n", "cc", "0c$<Esc>")
+-- vim.keymap.set("n", "cc", "0c$<Esc>")
+vim.keymap.set("n", "<leader>c", "cc<Esc>")
 
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "C", "c$")
@@ -60,4 +65,8 @@ vim.keymap.set("n", "C", "c$")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
+end)
+
+vim.keymap.set("n", "<leader>e", function()
+    vim.cmd("Ex")
 end)
