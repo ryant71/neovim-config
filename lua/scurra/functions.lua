@@ -19,7 +19,7 @@
 -- end
 
 function open_file_popup()
-	local file_path = vim.fn.expand('~/.config/nvim/remaps.txt')
+	local file_path = vim.fn.expand('~/.config/nvim/my_keys.md')
 	local file_contents = vim.fn.readfile(file_path)
 	local lines = {}
 	for _, line in ipairs(file_contents) do
@@ -43,10 +43,10 @@ function open_file_popup()
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
 	local winid = vim.api.nvim_open_win(bufnr, true, opts)
 	vim.api.nvim_win_set_option(winid, 'wrap', false)
-	vim.api.nvim_win_set_option(winid, 'cursorline', true)
+	vim.api.nvim_win_set_option(winid, 'cursorline', false)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<esc>', ':q!<cr>', {})
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'q', ':q!<cr>', {})
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<cr>', ':q!<cr>', {})
 end
 
-vim.api.nvim_set_keymap('n', '<leader>f', ':lua open_file_popup()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>i', ':lua open_file_popup()<cr>', { noremap = true })
