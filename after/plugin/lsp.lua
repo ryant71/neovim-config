@@ -62,6 +62,15 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+-- local lspconfig = require('lspconfig')
+-- lspconfig.yamlls.setup({
+--   settings = {
+--     yaml = {
+--       keyOrdering = false
+--     }
+--   }
+-- })
+
 lsp.setup()
 
 vim.diagnostic.config({
