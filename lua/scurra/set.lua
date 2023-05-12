@@ -50,3 +50,10 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.paste = true
+
+
+
+-- trying this out
+--
+-- vim.g.yaml_disable_languageserver = {'cloudformation'}
+-- vim.g.cfnlint_args = "--ignore-checks W"

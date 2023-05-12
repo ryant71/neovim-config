@@ -85,3 +85,5 @@ vim.keymap.set("n", "<leader>e", function()
 end)
 
 vim.keymap.set("n", "<leader>er", "<cmd>Vex!<CR>")
+
+vim.keymap.set("n", "<leader>l", "<cmd>set invlist<CR>")
