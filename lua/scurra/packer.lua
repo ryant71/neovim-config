@@ -54,17 +54,16 @@ return require("packer").startup(function(use)
     }
 
     use("folke/zen-mode.nvim")
-
+    use("shaunsingh/nord.nvim")      -- color
     use("folke/tokyonight.nvim")     -- color
     use("gruvbox-community/gruvbox") -- color
     use("sainnhe/everforest")        -- color
     use("sainnhe/gruvbox-material")  -- color
     use("sainnhe/sonokai")           -- color
-    -- use("x/rosepine")             -- color
+    -- use("x/rose-pine")             -- color
 
     -- I gave up on opening nvim in last cursor position
     -- so I have resorted to a plugin
     use("farmergreg/vim-lastplace")
-
 
 end)
