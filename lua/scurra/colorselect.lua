@@ -1,11 +1,11 @@
 M = {}
 
 -- Define the function to execute the line under the cursor
-function ExecuteFloatingWindowLine()
-   local line = vim.fn.getline('.')
-   -- Execute the line as a Vimscript expression
-   vim.api.nvim_exec('colorscheme' .. line, true)
-end
+-- function ExecuteFloatingWindowLine()
+--    local line = vim.fn.getline('.')
+--    -- Execute the line as a Vimscript expression
+--    vim.api.nvim_exec('colorscheme' .. line, true)
+-- end
 
 -- Set up the CursorMoved autocmd event to execute the line under the cursor
 
@@ -32,6 +32,7 @@ function M.open_color_popup()
 	local max_length = 0
 	local col_count = 0
     for _, line in ipairs(file_contents) do
+		-- look for lines ending with --color
         local pattern = "%s*use%([^%/]+/([^%)%s]+)\"%)%s*--%s*color$"
         local result = string.match(line, pattern)
         if result ~= nil then
