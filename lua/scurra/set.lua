@@ -51,7 +51,7 @@ vim.opt.splitbelow = true
 
 vim.opt.paste = true
 
-
+vim.g.python3_host_prog = '/Users/ryan/.pyenv/versions/neovim/bin/python'
 
 -- trying this out
 --

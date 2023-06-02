@@ -23,14 +23,18 @@ CNTRL-p         -> git files
 J               -> Move line below to end of current line. Keep cursor in place.
 CNTRL-d         -> Move down
 CNTRL-u         -> Move up
-
 n               -> Search up
 N               -> Search down
 <leader>p       -> Paste over something. Keep paste-buffer intact.
 <leader>y       -> [["+y]]
 <leader>Y       -> [["+Y]]
 <leader>d       -> [["_d]]
-
+"ry             -> register yank
+"rp             -> register put
+guw             -> make lowercase
+guW             -> make rest of word lowercase
+guW             -> make rest of word uppercase
+guaW            -> make word uppercase
 
 # VISUAL MODE
 
