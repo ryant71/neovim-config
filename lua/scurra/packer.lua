@@ -7,6 +7,18 @@ return require("packer").startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
 
+	use {
+	  "someone-stole-my-name/yaml-companion.nvim",
+	  requires = {
+		  { "neovim/nvim-lspconfig" },
+		  { "nvim-lua/plenary.nvim" },
+		  { "nvim-telescope/telescope.nvim" },
+	  },
+	  config = function()
+		require("telescope").load_extension("yaml_schema")
+	  end,
+	}
+
     -- begin theprimegean --
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -36,7 +48,7 @@ return require("packer").startup(function(use)
             {                                      -- Optional
                 'williamboman/mason.nvim',
                 run = function()
-                pcall(vim.cmd, 'MasonUpdate')
+                -- pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
             {'williamboman/mason-lspconfig.nvim'}, -- Optional

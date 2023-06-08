@@ -84,6 +84,10 @@ vim.keymap.set("n", "<leader>e", function()
     vim.cmd("Ex")
 end)
 
+-- Open window to the right with netrw ready
 vim.keymap.set("n", "<leader>er", "<cmd>Vex!<CR>")
 
 vim.keymap.set("n", "<leader>l", "<cmd>set invlist<CR>")
+
+-- remove spaces on an empty line
+vim.api.nvim_set_keymap('n', '<leader>fs', ':%s/\\s\\+$//<CR>', {noremap = true})
