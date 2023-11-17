@@ -92,6 +92,7 @@ return require("packer").startup(function(use)
     -- so I have resorted to a plugin
     use("farmergreg/vim-lastplace")
 
-	use("sbdchd/neoformat")
-
+    use("sbdchd/neoformat")
+    use('mfussenegger/nvim-lint')
+    
 end)
