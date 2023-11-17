@@ -51,9 +51,15 @@ vim.opt.splitbelow = true
 
 vim.opt.paste = true
 
-
+vim.g.python3_host_prog = '/Users/ryan/.pyenv/versions/neovim/bin/python'
 
 -- trying this out
 --
 -- vim.g.yaml_disable_languageserver = {'cloudformation'}
 -- vim.g.cfnlint_args = "--ignore-checks W"
+
+-- Define LanguageClient server commands
+vim.g.LanguageClient_serverCommands = {
+    ['yaml.cloudformation'] = {'~/.local/bin/cfn-lsp-extra'},
+    ['json.cloudformation'] = {'~/.local/bin/cfn-lsp-extra'}
+}

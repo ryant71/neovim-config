@@ -11,15 +11,15 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
 
---require('lspconfig.configs').cfn_lint = {
---  default_config = {
---    name = 'cfn-lint-extra',
---    cmd = {'~/.local/bin/cfn-lsp-extra'},
---    filetypes = {'.yml'},
---    root_dir = require('lspconfig.util').root_pattern({})
---  }
---}
---require('lspconfig').cfn_lint.setup({})
+require('lspconfig.configs').cfn_lint = {
+  default_config = {
+    name = 'cfn-lint-extra',
+    cmd = {'~/.local/bin/cfn-lsp-extra'},
+    filetypes = {'.yml'},
+    root_dir = require('lspconfig.util').root_pattern({})
+  }
+}
+require('lspconfig').cfn_lint.setup({})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -62,14 +62,14 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
--- local lspconfig = require('lspconfig')
--- lspconfig.yamlls.setup({
---   settings = {
---     yaml = {
---       keyOrdering = false
---     }
---   }
--- })
+local lspconfig = require('lspconfig')
+lspconfig.yamlls.setup({
+  settings = {
+    yaml = {
+      keyOrdering = false
+    }
+  }
+})
 
 lsp.setup()
 

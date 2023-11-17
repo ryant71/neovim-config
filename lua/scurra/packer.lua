@@ -7,6 +7,24 @@ return require("packer").startup(function(use)
     -- Packer can manage itself
     use("wbthomason/packer.nvim")
 
+	use {
+	  "someone-stole-my-name/yaml-companion.nvim",
+	  requires = {
+		  { "neovim/nvim-lspconfig" },
+		  { "nvim-lua/plenary.nvim" },
+		  { "nvim-telescope/telescope.nvim" },
+	  },
+	  config = function()
+		require("telescope").load_extension("yaml_schema")
+	  end,
+	}
+
+	use {
+		"autozimu/LanguageClient-neovim",
+    	branch = 'next',
+    	run = 'bash install.sh'
+	}
+
     -- begin theprimegean --
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -14,13 +32,13 @@ return require("packer").startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
+    -- use({
+    --     'rose-pine/neovim',
+    --     as = 'rose-pine',
+    --     config = function()
+    --         vim.cmd('colorscheme rose-pine')
+    --     end
+    -- })
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
@@ -36,7 +54,7 @@ return require("packer").startup(function(use)
             {                                      -- Optional
                 'williamboman/mason.nvim',
                 run = function()
-                pcall(vim.cmd, 'MasonUpdate')
+                -- pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
@@ -53,7 +71,15 @@ return require("packer").startup(function(use)
        requires = { "kyazdani42/nvim-web-devicons", opt = true }
     }
 
-    use("folke/zen-mode.nvim")
+	use("folke/zen-mode.nvim")
+
+    -- use({
+    --     "andrewferrier/wrapping.nvim",
+    --     config = function()
+    --         require("wrapping").setup()
+    --     end,
+    -- })
+
     use("shaunsingh/nord.nvim")      -- color
     use("folke/tokyonight.nvim")     -- color
     use("gruvbox-community/gruvbox") -- color
@@ -66,6 +92,7 @@ return require("packer").startup(function(use)
     -- so I have resorted to a plugin
     use("farmergreg/vim-lastplace")
 
-	use('mfussenegger/nvim-lint')
-
+    use("sbdchd/neoformat")
+    use('mfussenegger/nvim-lint')
+    
 end)

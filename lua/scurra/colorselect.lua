@@ -1,14 +1,22 @@
+M = {}
 
-Color_win_id = nil
-Color_buf_nr = nil
+-- Define the function to execute the line under the cursor
+-- function ExecuteFloatingWindowLine()
+--    local line = vim.fn.getline('.')
+--    -- Execute the line as a Vimscript expression
+--    vim.api.nvim_exec('colorscheme' .. line, true)
+-- end
 
-function Select_color_from_menu()
+-- Set up the CursorMoved autocmd event to execute the line under the cursor
+
+function M.select_color_from_menu()
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
     local line_contents = vim.api.nvim_buf_get_lines(0, line_number - 1, line_number, false)[1]
-    vim.cmd("colorscheme " .. line_contents)
+    -- vim.cmd("colorscheme " .. line_contents
+    vim.api.nvim_exec('colorscheme ' .. line_contents, true)
 end
 
-function Open_color_popup()
+function M.open_color_popup()
 
     if Color_win_id ~= nil and vim.api.nvim_win_is_valid(Color_win_id) then
         -- close menu
@@ -24,6 +32,7 @@ function Open_color_popup()
 	local max_length = 0
 	local col_count = 0
     for _, line in ipairs(file_contents) do
+		-- look for lines ending with --color
         local pattern = "%s*use%([^%/]+/([^%)%s]+)\"%)%s*--%s*color$"
         local result = string.match(line, pattern)
         if result ~= nil then
@@ -50,25 +59,30 @@ function Open_color_popup()
         title = "Color Select",
         title_pos = "center"
     }
+
+    -- vim.api.nvim_command("autocmd CursorMoved <buffer> lua M.select_color_from_menu()")
+
     local Color_buf_nr = vim.api.nvim_create_buf(false, true)
+
     vim.api.nvim_buf_set_lines(Color_buf_nr, 0, -1, true, lines)
+    --vim.api.nvim_command("setlocal timeoutlen=10")
+    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<esc>", ":q!<cr>", {nowait = true, noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "q", ":q!<cr>", {nowait = true, noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<leader>", "<nop>", {nowait = true, noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<buffer> <leader>", "<esc>", {nowait = true, noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<cr>", ":lua M.select_color_from_menu()<cr>", {})
+
+    -- Create a mapping to execute the line under the cursor
+    -- vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<Cmd>lua ExecuteFloatingWindowLine()<CR>', { silent = true, noremap = true })
+
     local Color_win_id = vim.api.nvim_open_win(Color_buf_nr, true, opts)
+
     vim.api.nvim_win_set_option(Color_win_id, "wrap", false)
     vim.api.nvim_win_set_option(Color_win_id, "cursorline", true)
-    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<esc>", ":q!<cr>", {})
-    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "q", ":q!<cr>", {})
-    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<leader>", "<nop>", {})
-    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<buffer> <leader>", "<esc>", {})
-    vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", "<cr>", ":lua Select_color_from_menu()<cr>", {})
 
-    -- Disable all keys except 'k', 'j', 'q', '<cr>', and '<esc>' in the popup buffer
-    local restricted_keys = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }
-    for _, key in ipairs(restricted_keys) do
-        vim.api.nvim_buf_set_keymap(Color_buf_nr, "n", key, "<nop>", {})
-    end
 end
 
-vim.api.nvim_set_keymap("n", "<leader>c", ":lua Open_color_popup()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>c", ":lua M.open_color_popup()<cr>", { noremap = true })
 
 -- function list_colorschemes()
 --     local colorschemes = vim.api.nvim_get_option("colorscheme")
@@ -82,3 +96,19 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":lua Open_color_popup()<cr>", { norem
 -- for _, colorscheme in ipairs(available_colorschemes) do
 --     print(colorscheme)
 -- end
+
+-- function foo()
+--     local colorschemes = {}
+--     local output = vim.fn.execute('colorscheme')
+--     for line in string.gmatch(output, '[^\r\n]+') do
+--         if not line:match('^No colorscheme loaded') then
+--             table.insert(colorschemes, line)
+--         end
+--     end
+-- 
+--     for _, name in ipairs(colorschemes) do
+--         print(name)
+--     end
+-- end
+-- 
+-- foo()
