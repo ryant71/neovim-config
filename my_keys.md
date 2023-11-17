@@ -17,6 +17,7 @@ CNTRL-p         -> git files
 
 # NORMAL MODE
 
+<leader>fs      -> Fuck spaces -- remove spaces from empty lines
 <leader>s       -> Do that visual <>s/xyz/abc/ thing
 <leader>e       -> Open netrw
 <leader>u       -> Open Undo Tree
