@@ -66,4 +66,6 @@ return require("packer").startup(function(use)
     -- so I have resorted to a plugin
     use("farmergreg/vim-lastplace")
 
+	use('mfussenegger/nvim-lint')
+
 end)
