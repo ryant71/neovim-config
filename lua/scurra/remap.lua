@@ -90,7 +90,9 @@ vim.keymap.set("n", "<leader>er", "<cmd>Vex!<CR>")
 
 vim.keymap.set("n", "<leader>l", "<cmd>set invlist<CR>")
 
--- remove spaces on an empty line
+-- remove trailing spaces
 vim.api.nvim_set_keymap('n', '<leader>fs', ':%s/\\s\\+$//<CR>', {noremap = true})
+-- replace tabs with 4 spaces
+vim.api.nvim_set_keymap('n', '<leader>ft', ':%s/	/    /g<CR>', {noremap = true})
 
 vim.keymap.set("n", "0", "^")

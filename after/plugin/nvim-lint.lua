@@ -1,5 +1,5 @@
 require('lint').linters_by_ft = {
-  	markdown = {'vale', 'cfn-lint'}
+  	markdown = {'cfn-lint'}
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
