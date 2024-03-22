@@ -56,7 +56,7 @@ vim.g.python3_host_prog = '/Users/ryan/.pyenv/versions/neovim/bin/python'
 -- trying this out
 --
 -- vim.g.yaml_disable_languageserver = {'cloudformation'}
--- vim.g.cfnlint_args = "--ignore-checks W"
+vim.g.cfnlint_args = "--ignore-checks W"
 
 -- Define LanguageClient server commands
 vim.g.LanguageClient_serverCommands = {
