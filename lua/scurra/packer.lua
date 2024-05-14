@@ -94,5 +94,4 @@ return require("packer").startup(function(use)
 
     use("sbdchd/neoformat")
     use('mfussenegger/nvim-lint')
-    
 end)

@@ -13,8 +13,10 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -36,7 +38,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
