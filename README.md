@@ -2,33 +2,33 @@
 
 ## layout
 
-.
-├── after
-│   └── plugin
-│       ├── colors.lua
-│       ├── fugitive.lua
-│       ├── harpoon.lua
-│       ├── lsp.lua
-│       ├── lualine.lua
-│       ├── nvim-lint.lua
-│       ├── telescope.lua
-│       ├── treesitter.lua
-│       ├── undotree.lua
-│       ├── yaml-companion.lua
-│       └── zenmode.lua
-├── init.lua
-├── lua
-│   └── scurra
-│       ├── colorselect.lua
-│       ├── filetype.lua
-│       ├── functions.lua
-│       ├── init.lua
-│       ├── packer.lua
-│       ├── remap.lua
-│       └── set.lua
-├── my_keys.md
-└── plugin
-    └── packer_compiled.lua
+    .
+    ├── after
+    │   └── plugin
+    │       ├── colors.lua
+    │       ├── fugitive.lua
+    │       ├── harpoon.lua
+    │       ├── lsp.lua
+    │       ├── lualine.lua
+    │       ├── nvim-lint.lua
+    │       ├── telescope.lua
+    │       ├── treesitter.lua
+    │       ├── undotree.lua
+    │       ├── yaml-companion.lua
+    │       └── zenmode.lua
+    ├── init.lua
+    ├── lua
+    │   └── scurra
+    │       ├── colorselect.lua
+    │       ├── filetype.lua
+    │       ├── functions.lua
+    │       ├── init.lua
+    │       ├── packer.lua
+    │       ├── remap.lua
+    │       └── set.lua
+    ├── my_keys.md
+    └── plugin
+        └── packer_compiled.lua
 
 ## lsp-zero
 
@@ -46,7 +46,7 @@ For the options I've added, I installed the following:
 
 ### Language Modes
 
-SaltStack, Jinja2
+Cloudformation, SaltStack, Jinja2
 
 ### Miscellaneous
 

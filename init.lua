@@ -17,3 +17,4 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 
 require("scurra")
+require("functions")
