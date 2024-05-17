@@ -37,10 +37,10 @@ For the options I've added, I installed the following:
         pipx install cfn-lsp-extra
         pipx install cfn-lint
         pip install "python-lsp-server[yapf]"
-        brew install chktex     # LaTeX linter
-        brew install checkmake  # Makefile linter
-        brew install yamllint   # yaml linter
-        brew install hadolint   # Dockerfile linter
+        ~~brew install~~ chktex     # LaTeX linter
+        ~~brew install~~ checkmake  # Makefile linter
+        ~~brew install~~ yamllint   # yaml linter
+        ~~brew install~~ hadolint   # Dockerfile linter
 
 ## TODO
 
