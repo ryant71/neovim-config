@@ -1,30 +1,34 @@
 # NEOVIM CONFIG
 
 ## layout
-        .
-        ├── README.md
-        ├── after
-        │   └── plugin
-        │       ├── colors.lua
-        │       ├── fugitive.lua
-        │       ├── harpoon.lua
-        │       ├── lsp.lua
-        │       ├── lualine.lua
-        │       ├── telescope.lua
-        │       ├── treesitter.lua
-        │       ├── undotree.lua
-        │       └── zenmode.lua
-        ├── init.lua
-        ├── lua
-        │   └── scurra
-        │       ├── functions.lua
-        │       ├── init.lua
-        │       ├── packer.lua
-        │       ├── remap.lua
-        │       └── set.lua
-        ├── plugin
-        │   └── packer_compiled.lua
-        └── remaps.txt
+
+    .
+    ├── after
+    │   └── plugin
+    │       ├── colors.lua
+    │       ├── fugitive.lua
+    │       ├── harpoon.lua
+    │       ├── lsp.lua
+    │       ├── lualine.lua
+    │       ├── nvim-lint.lua
+    │       ├── telescope.lua
+    │       ├── treesitter.lua
+    │       ├── undotree.lua
+    │       ├── yaml-companion.lua
+    │       └── zenmode.lua
+    ├── init.lua
+    ├── lua
+    │   └── scurra
+    │       ├── colorselect.lua
+    │       ├── filetype.lua
+    │       ├── functions.lua
+    │       ├── init.lua
+    │       ├── packer.lua
+    │       ├── remap.lua
+    │       └── set.lua
+    ├── my_keys.md
+    └── plugin
+        └── packer_compiled.lua
 
 ## lsp-zero
 
