@@ -2,10 +2,10 @@ require("lazy").setup({
 
     -- LSP configurations
     -- 'neovim/nvim-lspconfig',
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
-	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-	'neovim/nvim-lspconfig',
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+    'neovim/nvim-lspconfig',
 
 
     -- Completion framework
@@ -17,16 +17,16 @@ require("lazy").setup({
         'saadparwaiz1/cmp_luasnip'
     }},
 
-	{ 'theprimeagen/harpoon', dependencies = {
-		'nvim-lua/plenary.nvim',
-	}},
+    { 'theprimeagen/harpoon', dependencies = {
+        'nvim-lua/plenary.nvim',
+    }},
 
     -- Snippets
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
 
     -- File explorer
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
 
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
@@ -40,46 +40,46 @@ require("lazy").setup({
 
     -- Treesitter for syntax highlighting
     {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
-		config = function()
-			require	'nvim-treesitter.configs'.setup {
-				ensure_installed = {"lua"},
-				highlight = {
-					enable = true,
-				},
-			}
-		end
-	},
-
-	-- Better error display
-	{ 'glepnir/lspsaga.nvim',
-	  config = function()
-		require('lspsaga').setup({})
-	  end,
-	  dependencies = {
-		'nvim-treesitter/nvim-treesitter',
-		'nvim-tree/nvim-web-devicons',
-	  }
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require    'nvim-treesitter.configs'.setup {
+                ensure_installed = {"lua"},
+                highlight = {
+                    enable = true,
+                },
+            }
+        end
     },
 
-    'shaunsingh/nord.nvim',      	-- color
-    'folke/tokyonight.nvim',     	-- color
-    'gruvbox-community/gruvbox', 	-- color
-    'sainnhe/everforest',        	-- color
-    'sainnhe/gruvbox-material',  	-- color
-    'sainnhe/sonokai',           	-- color
-	{
-	 'rose-pine/neovim',
-	 name = 'rose-pine' 			-- color
-	},
+    -- Better error display
+    { 'glepnir/lspsaga.nvim',
+      config = function()
+        require('lspsaga').setup({})
+      end,
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+        'nvim-tree/nvim-web-devicons',
+      }
+    },
 
-	-- I gave up on opening nvim in last cursor position
-	-- so I have resorted to a plugin
-	'farmergreg/vim-lastplace',
+    'shaunsingh/nord.nvim',          -- color
+    'folke/tokyonight.nvim',         -- color
+    'gruvbox-community/gruvbox',     -- color
+    'sainnhe/everforest',            -- color
+    'sainnhe/gruvbox-material',      -- color
+    'sainnhe/sonokai',               -- color
+    {
+     'rose-pine/neovim',
+     name = 'rose-pine'             -- color
+    },
+
+    -- I gave up on opening nvim in last cursor position
+    -- so I have resorted to a plugin
+    'farmergreg/vim-lastplace',
 
     'mbbill/undotree',
 
-	'folke/zen-mode.nvim',
+    'folke/zen-mode.nvim',
 
 })
