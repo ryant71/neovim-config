@@ -26,7 +26,26 @@ require("lazy").setup({
     'rafamadriz/friendly-snippets',
 
     -- File explorer
+	{
     'nvim-tree/nvim-tree.lua',
+	config = function()
+		require('nvim-tree').setup({
+		  sort = {
+			sorter = "case_sensitive",
+		  },
+		  view = {
+			width = 30,
+		  },
+		  renderer = {
+			group_empty = true,
+		  },
+		  filters = {
+			dotfiles = true,
+		  },
+		}
+		)
+	end
+	},
 
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
@@ -81,5 +100,12 @@ require("lazy").setup({
     'mbbill/undotree',
 
     'folke/zen-mode.nvim',
+
+	{
+	 "jakobkhansen/journal.nvim",
+	 config = function()
+	 	require("journal").setup()
+	 end,
+	},
 
 })
