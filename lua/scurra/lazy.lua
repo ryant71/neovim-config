@@ -47,6 +47,9 @@ require("lazy").setup({
 	end
 	},
 
+
+	'sbdchd/neoformat',
+
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
 
