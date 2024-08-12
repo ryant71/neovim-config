@@ -1,4 +1,9 @@
+--local set = vim.keymap.set
+-- if you want to replace vim.keymap.set() with set()
+
 vim.g.mapleader = " "
+
+-- vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "<Up>", "<Nop>")
 vim.keymap.set("n", "<Down>", "<Nop>")
@@ -35,7 +40,7 @@ vim.keymap.set("v", "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format)
 
 --vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 --vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
