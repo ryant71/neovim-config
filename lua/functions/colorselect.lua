@@ -26,7 +26,7 @@ function M.open_color_popup()
         return
     end
 
-    local file_path = vim.fn.expand("~/.config/nvim/lua/scurra/packer.lua")
+    local file_path = vim.fn.expand("~/.config/nvim/lua/scurra/lazy.lua")
     local file_contents = vim.fn.readfile(file_path)
     local lines = {}
 	local max_length = 0

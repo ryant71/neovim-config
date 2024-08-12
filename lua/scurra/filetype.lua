@@ -27,7 +27,7 @@ require('lspconfig.configs').cfn_lsp = {
       return require('lspconfig').util.find_git_ancestor(fname) or vim.fn.getcwd()
     end,
     settings = {
-      documentFormatting = false,
+      documentFormatting = true,
     },
   },
 }
