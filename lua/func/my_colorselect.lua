@@ -1,3 +1,4 @@
+print('rhubarb my_colorselect')
 M = {}
 
 function M.select_color_from_menu()
@@ -61,9 +62,10 @@ function M.open_color_popup()
     -- vim.api.nvim_win_set_option(Color_win_id, "cursorline", true)
 
     -- Set up the CursorMoved autocmd event to execute the line under the cursor
-    vim.api.nvim_command("autocmd CursorMoved <buffer> lua require('my_colorselect').select_color_from_menu()")
+	vim.api.nvim_command("autocmd CursorMoved <buffer> lua require('my_colorselect').select_color_from_menu()")
+
 end
 
-vim.api.nvim_set_keymap("n", "<leader>c", ":lua require('my_colorselect').open_color_popup()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>oo", ":lua require('my_colorselect').open_color_popup()<cr>", { noremap = true })
 
 return M

@@ -14,16 +14,15 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.opt.mouse = ""
+vim.opt.clipboard = "unnamed"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -55,4 +54,6 @@ vim.opt.paste = true
 
 vim.g.python3_host_prog = '/home/ryan/.pyenv/shims/python'
 
+-- Disable the default 's' behavior so that mini.surround actually fucking works
+vim.api.nvim_set_keymap('n', 's', '<nop>', { noremap = true })
 

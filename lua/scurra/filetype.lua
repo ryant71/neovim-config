@@ -32,3 +32,27 @@ require('lspconfig.configs').cfn_lsp = {
   },
 }
 require('lspconfig').cfn_lsp.setup{}
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.json.tmpl",
+  callback = function()
+    vim.bo.filetype = "json"
+  end,
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.conf.tmpl",
+  callback = function()
+    vim.bo.filetype = "ini"
+  end,
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype == "template" then
+      vim.bo.filetype = "ini"
+    end
+  end,
+})
+
