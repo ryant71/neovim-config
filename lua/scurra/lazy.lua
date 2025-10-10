@@ -345,11 +345,29 @@ require("lazy").setup({
     {
       "terrastruct/d2-vim",
       ft = { "d2" },
+      init = function()
+        vim.g.d2_ascii_autorender = 1
+        vim.g.d2_ascii_command = "d2"
+        vim.g.d2_ascii_preview_width = vim.o.columns / 1.7
+        vim.g.d2_ascii_mode = "extended"
+        --    
+        vim.g.d2_fmt_autosave = 1
+        vim.g.d2_fmt_command = "d2 fmt"
+        vim.g.d2_fmt_fail_silently = 0
+        --
+        vim.g.d2_play_command = "d2 play"
+        vim.g.d2_play_theme = 0
+        vim.g.d2_play_sketch = 0
+      end,
     },
+
     {
       "ravsii/tree-sitter-d2",
       dependencies = { "nvim-treesitter/nvim-treesitter" },
       build = "make nvim-install",
     },
+
+    "github/copilot.vim",
+
   }
 )
