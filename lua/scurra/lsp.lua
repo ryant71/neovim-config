@@ -1,16 +1,19 @@
--- LSP setup
-local nvim_lsp = require('lspconfig')
+-- Neovim 0.11+ LSP configs
+-- Register configs with vim.lsp.config(<server>, <opts>) then enable with vim.lsp.enable(<server>)
 
--- TypeScript and JavaScript
-nvim_lsp.ts_ls.setup{}
+-- TypeScript / JavaScript
+vim.lsp.config("ts_ls", {})
+vim.lsp.enable("ts_ls")
 
--- Python
---nvim_lsp.pyright.setup{}
+-- Python (pyright) — still optional/commented out
+-- vim.lsp.config("pyright", {})
+-- vim.lsp.enable("pyright")
 
-nvim_lsp.ruff.setup {
+-- Ruff (linter/formatter via ruff-lsp)
+vim.lsp.config("ruff", {
   init_options = {
     settings = {
-      logLevel = 'debug',
+      logLevel = "debug",
       logFile = "~/.local/state/nvim/ruff.log",
       configuration = "~/.config/nvim/ruff.toml",
       configurationPreference = "filesystemFirst",
@@ -20,33 +23,36 @@ nvim_lsp.ruff.setup {
       },
       format = {
         enable = true,
-      }
-    }
-  }
-}
+      },
+    },
+  },
+})
+vim.lsp.enable("ruff")
 
-require'lspconfig'.terraformls.setup{}
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
+-- Terraform
+vim.lsp.config("terraformls", {})
+vim.lsp.enable("terraformls")
+
+-- Format on save for Terraform files
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
   callback = function()
     vim.lsp.buf.format()
   end,
 })
 
-
-require('lspconfig').typos_lsp.setup({
-    -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
-    cmd_env = { RUST_LOG = "error" },
-    init_options = {
-        -- Custom config. Used together with a config file found in the workspace or its parents,
-        -- taking precedence for settings declared in both.
-        -- Equivalent to the typos `--config` cli argument.
-        config = '~/code/typos-lsp/crates/typos-lsp/tests/typos.toml',
-        -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
-        -- Defaults to error.
-        diagnosticSeverity = "Error"
-    }
+-- Typos (typos-lsp)
+vim.lsp.config("typos_lsp", {
+  -- Logs from the language server itself (appears in :LspLog)
+  cmd_env = { RUST_LOG = "error" },
+  init_options = {
+    -- Merged with any workspace config (this value takes precedence on overlap)
+    config = "~/code/typos-lsp/crates/typos-lsp/tests/typos.toml",
+    diagnosticSeverity = "Error",
+  },
 })
+vim.lsp.enable("typos_lsp")
 
--- Enable debug logs for the LSP client. Recommended for debugging only.
+-- Enable debug logs for the LSP client (use only while debugging)
 vim.lsp.set_log_level("debug")
+

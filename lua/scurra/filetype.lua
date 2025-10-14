@@ -19,19 +19,24 @@ vim.filetype.add {
   },
 }
 
-require('lspconfig.configs').cfn_lsp = {
-  default_config = {
-    cmd = { os.getenv("HOME") .. '/.local/bin/cfn-lsp-extra' },
-    filetypes = { 'yaml.cloudformation', 'json.cloudformation' },
-    root_dir = function(fname)
-      return require('lspconfig').util.find_git_ancestor(fname) or vim.fn.getcwd()
-    end,
-    settings = {
-      documentFormatting = true,
-    },
+
+vim.lsp.config('cfn_lsp', {
+  cmd = { vim.fn.expand('~/.local/bin/cfn-lsp-extra') },
+
+  -- make sure you actually set these filetypes somewhere (ftdetect/autocmd)
+  filetypes = { 'yaml.cloudformation', 'json.cloudformation' },
+
+  -- simple, robust root detection in 0.11+
+  -- (you can also use a function if you need complex logic)
+  root_markers = { '.git' },
+
+  settings = {
+    documentFormatting = true,
   },
-}
-require('lspconfig').cfn_lsp.setup{}
+})
+
+-- Enable it
+vim.lsp.enable('cfn_lsp')
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.json.tmpl",
