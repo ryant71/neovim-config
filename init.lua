@@ -21,5 +21,5 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- rest of nvim-tree config in lua/scurra
 
+require("func")
 require("scurra")
-require("functions")

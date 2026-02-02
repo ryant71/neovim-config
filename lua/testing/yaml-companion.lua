@@ -44,9 +44,6 @@
 ------------------
 
 
-
-
-
 local cfg = require("yaml-companion").setup({
   -- Add any options here, or leave empty to use the default settings
 
@@ -69,4 +66,5 @@ local cfg = require("yaml-companion").setup({
   },
 })
 
-require("lspconfig")["yamlls"].setup(cfg)
+vim.lsp.config("yamlls", cfg)  -- register/merge the config for the server
+vim.lsp.enable("yamlls")       -- enable it (activates on its filetypes)
