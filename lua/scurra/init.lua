@@ -1,8 +1,0 @@
-require("scurra.set")
-require("scurra.lazy")
-require("scurra.lsp")
-require("scurra.nvim-tree")
-require("scurra.completion")
-require("scurra.treesitter")
-require("scurra.remap")
-require("scurra.filetype")

@@ -1,0 +1,8 @@
+require("core.set")
+require("core.lazy")
+require("core.lsp")
+require("core.nvim-tree")
+require("core.completion")
+require("core.treesitter")
+require("core.remap")
+require("core.filetype")

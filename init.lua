@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 -- if running nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- rest of nvim-tree config in lua/scurra
+-- rest of nvim-tree config in lua/core
 
 require("func")
-require("scurra")
+require("core")

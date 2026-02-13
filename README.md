@@ -18,7 +18,7 @@
     │       └── zenmode.lua
     ├── init.lua
     ├── lua
-    │   └── scurra
+    │   └── core
     │       ├── colorselect.lua
     │       ├── filetype.lua
     │       ├── functions.lua
