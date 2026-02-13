@@ -1,5 +1,12 @@
--- bootstrap lazy.nvim
---
+
+if vim.g.vscode then
+  -- Windsurf-compatible keymaps only
+  vim.opt.runtimepath:remove(vim.fn.stdpath("config") .. "/after")
+  require("core.keymaps")
+  return
+end
+
+-- Full Neovim setup (Telescope, nvim-tree, etc.)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -19,7 +26,7 @@ vim.opt.rtp:prepend(lazypath)
 -- if running nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- rest of nvim-tree config in lua/core
 
-require("func")
+-- rest of nvim-tree config in lua/core
 require("core")
+require("func")
