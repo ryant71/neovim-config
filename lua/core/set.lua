@@ -52,7 +52,7 @@ vim.opt.splitbelow = true
 
 vim.opt.paste = true
 
-vim.g.python3_host_prog = '/home/ryan/.pyenv/shims/python'
+vim.g.python3_host_prog = '/home/ryan/.local/share/mise/shims/python'
 
 -- Disable the default 's' behavior so that mini.surround actually fucking works
 vim.api.nvim_set_keymap('n', 's', '<nop>', { noremap = true })

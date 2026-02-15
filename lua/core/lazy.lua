@@ -1,11 +1,8 @@
 require("lazy").setup({
 
-    -- LSP configurations
-    -- 'neovim/nvim-lspconfig',
+    -- LSP configurations handled by core/lsp.lua (Neovim 0.11+ native API)
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-    'neovim/nvim-lspconfig',
 
 
     -- Completion framework
