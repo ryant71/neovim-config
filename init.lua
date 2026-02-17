@@ -1,4 +1,6 @@
-
+--
+-- When running in Windsurf via its neovim plugin
+--
 if vim.g.vscode then
   -- Windsurf-compatible keymaps only
   vim.opt.runtimepath:remove(vim.fn.stdpath("config") .. "/after")
@@ -6,7 +8,11 @@ if vim.g.vscode then
   return
 end
 
+--
 -- Full Neovim setup (Telescope, nvim-tree, etc.)
+--
+
+-- Bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({

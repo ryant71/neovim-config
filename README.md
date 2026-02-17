@@ -4,31 +4,60 @@
 
     .
     ├── after
-    │   └── plugin
-    │       ├── colors.lua
-    │       ├── fugitive.lua
-    │       ├── harpoon.lua
-    │       ├── lsp.lua
-    │       ├── lualine.lua
-    │       ├── nvim-lint.lua
-    │       ├── telescope.lua
-    │       ├── treesitter.lua
-    │       ├── undotree.lua
-    │       ├── yaml-companion.lua
-    │       └── zenmode.lua
+    │   ├── ftplugin
+    │   │   ├── json.lua
+    │   │   ├── lua.lua
+    │   │   ├── markdown.lua
+    │   │   ├── sh.lua
+    │   │   ├── template.lua
+    │   │   ├── typescript.lua
+    │   │   └── yaml.lua
+    │   ├── plugin
+    │   │   ├── arrow.lua
+    │   │   ├── colors.lua
+    │   │   ├── fugitive.lua
+    │   │   ├── lualine.lua
+    │   │   ├── luasnip.lua
+    │   │   ├── markdown.lua
+    │   │   ├── multiply.lua
+    │   │   ├── tabnine.lua
+    │   │   ├── telescope.lua
+    │   │   ├── toggleterm.lua
+    │   │   ├── treesitter.lua
+    │   │   ├── undotree.lua
+    │   │   ├── writing.lua
+    │   │   └── zenmode.lua
+    │   └── queries
+    │       └── yaml
+    │           └── injections.scm
     ├── init.lua
+    ├── lazy-lock.json
     ├── lua
-    │   └── core
-    │       ├── colorselect.lua
-    │       ├── filetype.lua
-    │       ├── functions.lua
-    │       ├── init.lua
-    │       ├── packer.lua
-    │       ├── remap.lua
-    │       └── set.lua
+    │   ├── core
+    │   │   ├── completion.lua
+    │   │   ├── filetype.lua
+    │   │   ├── init.lua
+    │   │   ├── keymaps.lua
+    │   │   ├── lazy.lua
+    │   │   ├── lsp.lua
+    │   │   ├── nvim-tree.lua
+    │   │   ├── set.lua
+    │   │   └── treesitter.lua
+    │   ├── func
+    │   │   ├── init.lua
+    │   │   ├── multiply.lua
+    │   │   ├── my_colorselect.lua
+    │   │   ├── my_info.lua
+    │   │   ├── par.lua
+    │   │   └── sorting.lua
+    │   └── testing
+    │       ├── test.lua
+    │       └── yaml-companion.lua
     ├── my_keys.md
-    └── plugin
-        └── packer_compiled.lua
+    ├── README.md
+    ├── ruff.toml
+    └── typrstats
+
 
 ## lsp-zero
 
