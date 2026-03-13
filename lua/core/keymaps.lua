@@ -100,9 +100,9 @@ vim.keymap.set(
 )
 
 -- remove trailing spaces
-vim.api.nvim_set_keymap('n', '<leader>fs', ':%s/\\s\\+$//<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>fs', ':%s/\\s\\+$//<CR>', {noremap = true})
 -- replace tabs with 4 spaces
-vim.api.nvim_set_keymap('n', '<leader>ft', ':%s/	/    /g<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>ft', ':%s/	/    /g<CR>', {noremap = true})
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 

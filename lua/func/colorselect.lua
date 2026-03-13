@@ -93,6 +93,6 @@ function M.open_color_popup()
     })
 end
 
-vim.api.nvim_set_keymap("n", "<leader>oo", ":lua require('func.colorselect').open_color_popup()<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>oo", function() require('func.colorselect').open_color_popup() end, { noremap = true })
 
 return M

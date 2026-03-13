@@ -1,5 +1,7 @@
+local M = {}
+
 -- Lua function using par to format lines
-function FormatWithPar()
+function M.FormatWithPar()
   vim.cmd([[
     if mode() ==# 'v' || mode() ==# 'V'
       '<,'>!par 80q
@@ -10,4 +12,6 @@ function FormatWithPar()
 end
 
 -- Key mappings (example: <leader>p)
-vim.keymap.set({'n', 'v'}, '<leader>8', FormatWithPar, { desc = "Format text with par" })
+vim.keymap.set({'n', 'v'}, '<leader>8', M.FormatWithPar, { desc = "Format text with par" })
+
+return M

@@ -1,4 +1,4 @@
 require("func.colorselect")
-require("func.my_info")
+require("func.help")
 require("func.sorting")
 require("func.par")

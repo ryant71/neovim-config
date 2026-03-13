@@ -36,3 +36,4 @@ vim.g.loaded_netrwPlugin = 1
 -- rest of nvim-tree config in lua/core
 require("core")
 require("func")
+require("testing")

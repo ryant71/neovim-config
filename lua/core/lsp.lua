@@ -56,6 +56,11 @@ vim.lsp.config("lua_ls", {
       diagnostics = {
         globals = { "vim" },
       },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+      telemetry = { enable = false },
     },
   },
 })
@@ -111,4 +116,3 @@ vim.lsp.enable("typos_lsp")
 
 -- Enable debug logs for the LSP client (use only while debugging)
 vim.lsp.set_log_level("warn")
-

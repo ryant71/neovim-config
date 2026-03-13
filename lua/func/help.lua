@@ -18,12 +18,15 @@
 --  vim.api.nvim_win_set_buf(0, bufnr)
 -- end
 
-function open_info_popup()
-    local file_path = vim.fn.expand('~/.config/nvim/my_keys.md')
-    local file_contents = vim.fn.readfile(file_path)
+local M = {}
+
+function M.open_info_popup()
+    local file_path = vim.fn.expand('~/.config/nvim/keymaps.md')
+    local fh = io.open(file_path, 'r')
     local lines = {}
-    for _, line in ipairs(file_contents) do
-        table.insert(lines, line)
+    if fh then
+        for line in fh:lines() do table.insert(lines, line) end
+        fh:close()
     end
     local width = vim.api.nvim_get_option('columns')
     local height = vim.api.nvim_get_option('lines')
@@ -49,10 +52,7 @@ function open_info_popup()
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<cr>', ':q!<cr>', {})
 end
 
-vim.api.nvim_set_keymap('n', '<leader>i', ':lua open_info_popup()<cr>', { noremap = true })
-
-
-vim.api.nvim_set_keymap('n', '<leader>tk', ':lua require("yaml-companion").open_ui_select()<cr>', {noremap = true} )
+vim.keymap.set('n', '<leader>i', function() require('func.help').open_info_popup() end, { noremap = true })
 
 
 -- local function get_schema()
@@ -62,3 +62,5 @@ vim.api.nvim_set_keymap('n', '<leader>tk', ':lua require("yaml-companion").open_
 --   end
 --   return schema.result[1].name
 -- end
+
+return M
