@@ -115,4 +115,4 @@ vim.lsp.config("typos_lsp", {
 vim.lsp.enable("typos_lsp")
 
 -- Enable debug logs for the LSP client (use only while debugging)
-vim.lsp.set_log_level("warn")
+vim.lsp.log.set_level("warn")
