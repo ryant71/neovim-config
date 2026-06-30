@@ -23,7 +23,12 @@ require("lazy").setup({
             show_icons = true,
             leader_key = ';', -- Recommended to be a single key
             buffer_leader_key = 'm', -- Per Buffer Mappings
-        }
+        },
+        keys = {
+            { "H", function() require("arrow.persist").previous() end, mode = "n" },
+            { "L", function() require("arrow.persist").next() end, mode = "n" },
+            { "<C-s>", function() require("arrow.persist").toggle() end, mode = "n" },
+        },
     },
 
     -- Snippets
@@ -65,27 +70,43 @@ require("lazy").setup({
     'sbdchd/neoformat',
 
     -- Fuzzy finder
-    'nvim-telescope/telescope.nvim',
+    {
+        'nvim-telescope/telescope.nvim',
+        keys = {
+            { '<leader>ff', function() require('telescope.builtin').find_files() end, mode = 'n' },
+            { '<C-p>', function() require('telescope.builtin').git_files() end, mode = 'n' },
+            { '<leader>ss', function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end, mode = 'n' },
+        },
+    },
 
     -- Git integration
     'tpope/vim-fugitive',
     'lewis6991/gitsigns.nvim',
 
     -- Status line
-    'nvim-lualine/lualine.nvim',
+    {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('lualine').setup()
+        end,
+    },
 
     -- Treesitter for syntax highlighting
     {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        branch = 'master',
+        build = ':TSUpdate',
         config = function()
-            require 'nvim-treesitter.configs'.setup {
-                ensure_installed = { "lua" },
+            require('nvim-treesitter.configs').setup({
+                ensure_installed = { "python", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query" },
+                sync_install = false,
+                auto_install = true,
                 highlight = {
                     enable = true,
+                    additional_vim_regex_highlighting = false,
                 },
-            }
-        end
+            })
+        end,
     },
 
     -- Better error display
@@ -128,18 +149,55 @@ require("lazy").setup({
     -- begin: writing --
 
     -- what you'd think it is
-    -- {
-    --     'iamcco/markdown-preview.nvim',
-    --     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    --     build = "cd app && yarn install",
-    --     init = function()
-    --         vim.g.mkdp_filetypes = { "markdown" }
-    --     end,
-    --     ft = { "markdown" }
-    -- },
+    {
+        'iamcco/markdown-preview.nvim',
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" }
+    },
 
     -- distraction-free writing
-    'folke/zen-mode.nvim',
+    {
+        'folke/zen-mode.nvim',
+        keys = {
+            {
+                '<leader>zz',
+                function()
+                    require('zen-mode').setup({
+                        window = {
+                            width = .55,
+                            options = {},
+                        },
+                    })
+                    require('zen-mode').toggle()
+                    vim.wo.wrap = false
+                    vim.wo.number = true
+                    vim.wo.rnu = true
+                end,
+                mode = 'n',
+            },
+            {
+                '<leader>zw',
+                function()
+                    require('zen-mode').setup({
+                        window = {
+                            width = 120,
+                            options = {},
+                        },
+                    })
+                    require('zen-mode').toggle()
+                    vim.wo.wrap = true
+                    vim.wo.number = false
+                    vim.wo.rnu = false
+                    vim.opt.colorcolumn = '0'
+                end,
+                mode = 'n',
+            },
+        },
+    },
 
     {
     	"preservim/vim-pencil",
@@ -377,7 +435,16 @@ require("lazy").setup({
 
     "xiyaowong/transparent.nvim",
 
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
+    {
+        'akinsho/toggleterm.nvim',
+        version = '*',
+        config = function()
+            require('toggleterm').setup({
+                size = 80,
+                direction = 'float',
+            })
+        end,
+    },
 
   }
 )
