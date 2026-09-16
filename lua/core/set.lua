@@ -50,10 +50,22 @@ vim.opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.paste = true
+vim.opt.paste = false
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 vim.g.python3_host_prog = '/home/ryan/.local/share/mise/shims/python'
 
 -- Disable the default 's' behavior so that mini.surround actually fucking works
 vim.api.nvim_set_keymap('n', 's', '<nop>', { noremap = true })
+
+vim.keymap.set("n", "<leader>tp", function()
+  local new_value = not vim.opt.paste:get()
+  vim.opt.paste = new_value
+  vim.notify(string.format("Paste mode: %s", new_value and "ON" or "OFF"))
+end, { desc = "Toggle paste mode" })
 
