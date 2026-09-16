@@ -91,49 +91,43 @@ require("lazy").setup({
         end,
     },
 
-    -- Treesitter for syntax highlighting
+    -- Treesitter parsers/queries (highlighting and folds are built into nvim)
     {
         'nvim-treesitter/nvim-treesitter',
-        branch = 'master',
+        branch = 'main',
+        lazy = false,
         build = ':TSUpdate',
-        init = function()
-            -- The frozen master branch supports nvim <= 0.11. On 0.12 query
-            -- handlers receive a list of nodes per capture instead of a single
-            -- node, which breaks its custom predicates/directives (e.g. markdown
-            -- code-fence injections). Hand only its handlers the last node.
-            if vim.fn.has('nvim-0.12') == 0 then
-                return
-            end
-            local query = require('vim.treesitter.query')
-            for _, fn in ipairs({ 'add_predicate', 'add_directive' }) do
-                local orig = query[fn]
-                query[fn] = function(name, handler, opts)
-                    local src = debug.getinfo(2, 'S').source
-                    if src:find('nvim%-treesitter/query_predicates') then
-                        local inner = handler
-                        handler = function(match, ...)
-                            local single = setmetatable({}, {
-                                __index = function(_, id)
-                                    local nodes = match[id]
-                                    return type(nodes) == 'table' and nodes[#nodes] or nodes
-                                end,
-                            })
-                            return inner(single, ...)
-                        end
-                    end
-                    return orig(name, handler, opts)
+        config = function()
+            local ts = require('nvim-treesitter')
+            ts.install({
+                "python", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query",
+                "markdown", "markdown_inline",
+            })
+
+            local function start(buf)
+                if vim.api.nvim_buf_is_valid(buf) then
+                    pcall(vim.treesitter.start, buf)
                 end
             end
-        end,
-        config = function()
-            require('nvim-treesitter.configs').setup({
-                ensure_installed = { "python", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query" },
-                sync_install = false,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
+
+            -- Enable highlighting, installing missing parsers on demand
+            vim.api.nvim_create_autocmd('FileType', {
+                group = vim.api.nvim_create_augroup('treesitter_start', { clear = true }),
+                callback = function(args)
+                    local lang = vim.treesitter.language.get_lang(args.match)
+                    if not lang then
+                        return
+                    end
+                    if vim.list_contains(ts.get_installed(), lang) then
+                        start(args.buf)
+                    elseif vim.list_contains(ts.get_available(), lang) then
+                        ts.install(lang):await(function(err)
+                            if not err then
+                                vim.schedule(function() start(args.buf) end)
+                            end
+                        end)
+                    end
+                end,
             })
         end,
     },
