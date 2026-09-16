@@ -35,7 +35,7 @@ vim.g.mkdp_open_ip = ''
 -- valid: `/path/with\ space/xxx`
 -- invalid: `/path/with\\ space/xxx`
 -- default: ''
-vim.g.mkdp_browser = '/snap/bin/brave'
+vim.g.mkdp_browser = '/usr/bin/brave-browser'
 
 -- Set to 1, echo preview page URL in command line when opening preview page
 -- default is 0

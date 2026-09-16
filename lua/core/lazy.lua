@@ -96,6 +96,35 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter',
         branch = 'master',
         build = ':TSUpdate',
+        init = function()
+            -- The frozen master branch supports nvim <= 0.11. On 0.12 query
+            -- handlers receive a list of nodes per capture instead of a single
+            -- node, which breaks its custom predicates/directives (e.g. markdown
+            -- code-fence injections). Hand only its handlers the last node.
+            if vim.fn.has('nvim-0.12') == 0 then
+                return
+            end
+            local query = require('vim.treesitter.query')
+            for _, fn in ipairs({ 'add_predicate', 'add_directive' }) do
+                local orig = query[fn]
+                query[fn] = function(name, handler, opts)
+                    local src = debug.getinfo(2, 'S').source
+                    if src:find('nvim%-treesitter/query_predicates') then
+                        local inner = handler
+                        handler = function(match, ...)
+                            local single = setmetatable({}, {
+                                __index = function(_, id)
+                                    local nodes = match[id]
+                                    return type(nodes) == 'table' and nodes[#nodes] or nodes
+                                end,
+                            })
+                            return inner(single, ...)
+                        end
+                    end
+                    return orig(name, handler, opts)
+                end
+            end
+        end,
         config = function()
             require('nvim-treesitter.configs').setup({
                 ensure_installed = { "python", "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query" },
