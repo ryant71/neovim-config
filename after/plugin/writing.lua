@@ -1,6 +1,3 @@
--- Configurations
-vim.g.mkdp_auto_start = 1
-
 -- Autocommands
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',

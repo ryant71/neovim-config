@@ -91,7 +91,7 @@ vim.g.mkdp_port = ''
 vim.g.mkdp_page_title = '「${name}」'
 
 -- Use a custom location for images
-vim.g.mkdp_images_path = '/home/user/.markdown_images'
+-- vim.g.mkdp_images_path = '/home/user/.markdown_images'
 
 -- Recognized filetypes
 -- these filetypes will have MarkdownPreview... commands
