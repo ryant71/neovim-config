@@ -106,10 +106,6 @@ vim.keymap.set('n', '<leader>ft', ':%s/	/    /g<CR>', {noremap = true})
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
-vim.keymap.set("n", "<leader>-", function()
-  require("yazi").yazi()
-end)
-
 -- make this work sometime
 -- vim.keymap.set("n", '<leader><leader>s"', 'ysiw"')
 
