@@ -35,7 +35,8 @@ vim.g.mkdp_open_ip = ''
 -- valid: `/path/with\ space/xxx`
 -- invalid: `/path/with\\ space/xxx`
 -- default: ''
-vim.g.mkdp_browser = '/usr/bin/brave-browser'
+--
+-- vim.g.mkdp_browser = '/usr/bin/firefox'
 
 -- Set to 1, echo preview page URL in command line when opening preview page
 -- default is 0
@@ -44,7 +45,33 @@ vim.g.mkdp_echo_preview_url = 0
 -- A custom Vim function name to open preview page
 -- This function will receive URL as param
 -- default is empty
-vim.g.mkdp_browserfunc = ''
+-- Overrides mkdp_browser when set.
+-- Preview browser: "zen" (new Zen window) or "chromium" (Chromium app mode,
+-- window without tabs or address bar)
+local preview_browser = "firefox"
+
+local preview_commands = {
+    zen = { 'flatpak', 'run', 'app.zen_browser.zen', '--new-window' },
+    chromium = { 'chromium' },
+    firefox = { 'firefox' }
+}
+
+function _G.MkdpOpenPreview(url)
+    local cmd = vim.deepcopy(preview_commands[preview_browser])
+    if preview_browser == "chromium" then
+        table.insert(cmd, '--app=' .. url)
+    else
+        table.insert(cmd, url)
+    end
+    vim.fn.jobstart(cmd, { detach = true })
+end
+
+vim.cmd([[
+function! MkdpOpenPreview(url)
+  call v:lua.MkdpOpenPreview(a:url)
+endfunction
+]])
+vim.g.mkdp_browserfunc = 'MkdpOpenPreview'
 
 -- Options for Markdown rendering
 -- mkit: markdown-it options for rendering
