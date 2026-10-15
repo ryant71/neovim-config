@@ -80,16 +80,13 @@ vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "C", "c$")
 
 
--- Netrw
----
-vim.keymap.set("n", "<leader>e", function()
-    vim.cmd("Ex")
-end)
+-- File manager (netrw is disabled in init.lua, so use Oil)
+vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open file manager (Oil)" })
 
--- Open window to the right with netrw ready
-vim.keymap.set("n", "<leader>er", "<cmd>Vex!<CR>")
+-- Open window to the right with Oil ready
+vim.keymap.set("n", "<leader>E", "<CMD>vsplit | Oil<CR>", { desc = "Open file manager in right split" })
 
-vim.keymap.set("n", "<leader>l", "<cmd>set invlist<CR>")
+vim.keymap.set("n", "<leader>L", "<cmd>set invlist<CR>", { desc = "Toggle whitespace chars" })
 
 -- Make lower case with Capitalised first letter
 vim.keymap.set(
@@ -117,7 +114,7 @@ vim.keymap.set("n", '00', '0', { noremap = true, silent = true })
 vim.keymap.set("n", "0", "^", { noremap = true, silent = true })
 
 
-vim.keymap.set("n", "<leader>uu", function()
+vim.keymap.set("n", "<leader>U", function()
   local word = vim.fn.expand("<cword>")
   local UWORD = word:upper()
   vim.cmd("%s/\\<" .. word .. "\\>/" .. UWORD .. "/g")

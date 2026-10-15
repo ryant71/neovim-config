@@ -19,7 +19,6 @@ local function on_attach(client, bufnr)
   
   -- Documentation
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
   
   -- Workspace
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
@@ -31,9 +30,6 @@ local function on_attach(client, bufnr)
   -- Code actions
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  
-  -- Formatting
-  vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 end
 
 -- Python (pyrefly)
