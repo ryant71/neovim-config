@@ -7,6 +7,31 @@
   `<C-p>`           Find git-tracked files
   `<leader>ss`      Grep the project for a prompted string
 
+# Bookmarks (arrow)
+
+  `<C-s>`           Bookmark / unbookmark current file
+  `;`               Bookmark menu: key jumps, `v`/`-` split, `e` edit
+  `H` / `L`         Previous / next bookmarked file
+  `<leader>m`       Line bookmarks in this buffer
+
+# Marks
+
+  `ma`              Set mark a (lowercase: this file only)
+  `mA`              Set mark A (uppercase: global, jumps across files)
+  `'a` / `` `a ``   Jump to mark a: line / exact column
+  `''`              Back to where you were before the last jump
+  `` `. ``          Position of the last change
+  `:marks`          List marks           `:delm a` delete mark a
+
+# Folding                                     (treesitter, opens unfolded)
+
+  `za`              Toggle fold under cursor
+  `zc` / `zo`       Close / open fold
+  `zM` / `zR`       Close all / open all folds
+  `zj` / `zk`       Move to next / previous fold
+  `[z` / `]z`       Jump to start / end of current fold
+  `zv`              Open just enough folds to show the cursor
+
 # Clipboard & Registers                       (normal + visual)
 
   `<leader>y`       Yank to system clipboard
