@@ -22,12 +22,16 @@ require("lazy").setup({
         opts = {
             show_icons = true,
             leader_key = ';', -- Recommended to be a single key
-            buffer_leader_key = 'm', -- Per Buffer Mappings
+            buffer_leader_key = '<leader>m', -- Per Buffer Mappings (leaves native marks free)
+            save_key = 'git_root', -- one bookmark list per repo, whatever the cwd
         },
         keys = {
-            { "H", function() require("arrow.persist").previous() end, mode = "n" },
-            { "L", function() require("arrow.persist").next() end, mode = "n" },
-            { "<C-s>", function() require("arrow.persist").toggle() end, mode = "n" },
+            -- arrow maps ; and <leader>m in setup(), so they must trigger loading too
+            { ";", mode = "n", desc = "Arrow file bookmarks" },
+            { "<leader>m", mode = "n", desc = "Arrow line bookmarks (this buffer)" },
+            { "H", function() require("arrow.persist").previous() end, mode = "n", desc = "Arrow previous bookmarked file" },
+            { "L", function() require("arrow.persist").next() end, mode = "n", desc = "Arrow next bookmarked file" },
+            { "<C-s>", function() require("arrow.persist").toggle() end, mode = "n", desc = "Arrow toggle bookmark on current file" },
         },
     },
 
@@ -72,11 +76,22 @@ require("lazy").setup({
     -- Fuzzy finder
     {
         'nvim-telescope/telescope.nvim',
-        keys = {
-            { '<leader>ff', function() require('telescope.builtin').find_files() end, mode = 'n' },
-            { '<C-p>', function() require('telescope.builtin').git_files() end, mode = 'n' },
-            { '<leader>ss', function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end, mode = 'n' },
+        version = '*', -- pin to latest release tag, as upstream recommends
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
+        cmd = 'Telescope',
+        keys = {
+            { '<leader>ff', function() require('telescope.builtin').find_files() end, mode = 'n', desc = 'Telescope find files' },
+            { '<C-p>', function() require('telescope.builtin').git_files() end, mode = 'n', desc = 'Telescope git files' },
+            { '<leader>ss', function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') }) end, mode = 'n', desc = 'Telescope grep string' },
+        },
+        config = function()
+            local telescope = require('telescope')
+            telescope.setup({})
+            telescope.load_extension('fzf')
+        end,
     },
 
     -- Git integration
