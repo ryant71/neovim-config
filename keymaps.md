@@ -1,53 +1,43 @@
-# TELESCOPE
+# Files & Search
 
-<leader>ff      -> Find files
-CNTRL-p         -> git files
-<leader>ss      -> Grep
+  `<leader>e`       Open file manager (Oil) at current file's dir
+  `-`               Same as above
+  `<leader>E`       Open file manager in a split to the right
+  `<leader>ff`      Find files (Telescope)
+  `<C-p>`           Find git-tracked files
+  `<leader>ss`      Grep the project for a prompted string
 
+# Clipboard & Registers                       (normal + visual)
 
-# NORMAL MODE
+  `<leader>y`       Yank to system clipboard
+  `<leader>Y`       Yank line to system clipboard
+  `<leader>p`       Paste from system clipboard        (normal)
+  `<leader>pp`      Paste over selection, keep yank    (visual)
+  `<leader>d`       Delete without overwriting yank
+  `"ry`             Yank into register r
+  `"rp`             Put from register r
 
-<leader>fs      -> Fuck spaces -- remove spaces from empty lines
-<leader>s       -> Do that visual <>s/xyz/abc/ thing
-<leader>e       -> Open netrw
-<leader>u       -> Open Undo Tree
-J               -> Move line below to end of current line. Keep cursor in place.
-CNTRL-d         -> Move down
-CNTRL-u         -> Move up
-n               -> Search up
-N               -> Search down
-<leader>p       -> Paste from system clipboard
-<leader>y       -> [["+y]]
-<leader>Y       -> [["+Y]]
-<leader>d       -> [["_d]]
-"ry             -> register yank
-"rp             -> register put
-guw             -> make lowercase
-guW             -> make rest of word lowercase
-gUW             -> make rest of word uppercase
-guaW            -> make word uppercase
+# Change Case
 
-# VISUAL MODE
+  `guw`             Lowercase to end of word
+  `guW`             Lowercase to end of WORD
+  `gUW`             Uppercase to end of WORD
+  `guaW`            Lowercase whole WORD
+  `gUaW`            Uppercase whole WORD
 
-<leader>y       -> [["+y]]
-<leader>Y       -> [["+Y]]
-<leader>d       -> [["_d]]
+# Editing
 
+  `<leader>u`       Toggle undo tree
 
-# INSERT MODE
+# Windows
 
+  `<C-w> n`         New window below    [empty file]
+  `<C-w> ^`         New window below    [previous file]
+  `<C-w> s`         New window below    [same file]
+  `<C-w> v`         New window right    [same file]
+  `<C-w> hjkl`      Move to window left/down/up/right
+  `<leader>hjkl`    Same as above
 
-CNTRL-c         -> <Esc>
+# Toggles
 
-
-# COMMANDS
-
-:set list!      -> Toggle show whitespace, etc
-
-CTRL-W n        -> Open window with   [empty file]
-CTRL-W ^        -> Open window with   [netrw]
-CTRL-W s        -> Open window below  [same file]
-CTRL-W v        -> Open window right  [same file]
-CTRL-W (hjkl)   -> Switch Window
-
-
+  `<leader>L`       Show/hide whitespace chars  (`:set list!`)
