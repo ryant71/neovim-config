@@ -39,6 +39,8 @@ Okay this is a test code block.
     │           └── injections.scm
     ├── init.lua
     ├── lazy-lock.json
+    ├── luasnippets
+    │   └── sh.lua
     ├── lua
     │   ├── core
     │   │   ├── completion.lua

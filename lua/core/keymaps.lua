@@ -66,8 +66,9 @@ vim.keymap.set("n", "<C-j>", "20<Down>zz")
 vim.keymap.set("n", "<C-k>", "20<Up>zz")
 
 -- normal mode = drag lines aroung
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+-- "x" not "v": keep select mode free for LuaSnip placeholder jumps
+vim.keymap.set("x", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("x", "<C-k>", ":m '<-2<CR>gv=gv")
 
 -- vim.keymap.set("n", "cc", "cO")
 -- vim.keymap.set("n", "cc",  "<cmd>silent cc :setlocal noai<CR>cc:setlocal ai<CR>")

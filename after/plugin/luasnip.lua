@@ -1,4 +1,6 @@
 require("luasnip.loaders.from_vscode").lazy_load()
+-- Own snippets: luasnippets/<filetype>.lua in the config dir
+require("luasnip.loaders.from_lua").lazy_load()
 
 local ls = require("luasnip")
 
