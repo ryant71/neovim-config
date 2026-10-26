@@ -54,6 +54,15 @@
 
   `<leader>u`       Toggle undo tree
 
+# Snippets (LuaSnip)                          (insert + select)
+
+  `<C-k>`           Expand snippet trigger before cursor    (insert)
+  `<C-l>` / `<C-j>` Next / previous placeholder
+  `<C-e>`           Cycle choice (when a choice node is active)
+  `<CR>`            Snippets also show in the completion menu
+  `args`            sh: usage() + flag/positional parsing
+  Own snippets live in `luasnippets/<filetype>.lua`
+
 # Windows
 
   `<C-w> n`         New window below    [empty file]
