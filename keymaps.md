@@ -57,10 +57,11 @@
 # Snippets (LuaSnip)                          (insert + select)
 
   `<C-k>`           Expand snippet trigger before cursor    (insert)
-  `<C-l>` / `<C-j>` Next / previous placeholder
+  `<C-l>` / `<C-j>` Next / previous placeholder (also normal mode inside a snippet)
   `<C-e>`           Close completion menu, else cycle choice
   `<C-n>` / `<C-p>` Next / previous completion item (also arrows)
   `<CR>`            Accept completion item (snippets show in the menu)
+  `<C-y>`           Accept completion item and return to normal mode
   `args`            sh: usage() + flag/positional parsing
   Own snippets live in `luasnippets/<filetype>.lua`
 

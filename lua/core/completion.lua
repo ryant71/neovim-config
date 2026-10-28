@@ -29,6 +29,18 @@ cmp.setup({
                 fallback()
             end
         end),
+        -- Accept and drop to normal mode (<Esc> leaves both insert and select mode)
+        ['<C-y>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.confirm({ select = true }, function()
+                    vim.schedule(function()
+                        vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "n", false)
+                    end)
+                end)
+            else
+                fallback()
+            end
+        end),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
