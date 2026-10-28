@@ -6,11 +6,11 @@ local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 return {
-	-- "@" and "~" delimit placeholders, since bash is full of {} [] and <>
-	s(
-		{ trig = "args", desc = "Parse flags and positional args (while/case)" },
-		fmt(
-			[=[
+  -- "@" and "~" delimit placeholders, since bash is full of {} [] and <>
+  s(
+    { trig = "args", desc = "Parse flags and positional args (while/case)" },
+    fmt(
+      [=[
 usage() {
 	cat <<EOF
 Usage: ${0##*/} [-h] [-v] [-o FILE] @~
@@ -48,12 +48,27 @@ fi
 
 @~
 ]=],
-			{
-				i(1, "ARG..."),
-				i(2, "Describe what this script does."),
-				i(0),
-			},
-			{ delimiters = "@~" }
-		)
-	),
+      {
+        i(1, "ARG..."),
+        i(2, "Describe what this script does."),
+        i(0),
+      },
+      { delimiters = "@~" }
+    )
+  ),
+
+  s(
+    { trig = ";bash", desc = "Setup basic bash scaffold" },
+    fmt(
+      [=[
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+@~
+]=],
+      { i(0) },
+      { delimiters = "@~" }
+    )
+  ),
 }
