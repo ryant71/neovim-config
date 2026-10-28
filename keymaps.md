@@ -58,8 +58,9 @@
 
   `<C-k>`           Expand snippet trigger before cursor    (insert)
   `<C-l>` / `<C-j>` Next / previous placeholder
-  `<C-e>`           Cycle choice (when a choice node is active)
-  `<CR>`            Snippets also show in the completion menu
+  `<C-e>`           Close completion menu, else cycle choice
+  `<C-n>` / `<C-p>` Next / previous completion item (also arrows)
+  `<CR>`            Accept completion item (snippets show in the menu)
   `args`            sh: usage() + flag/positional parsing
   Own snippets live in `luasnippets/<filetype>.lua`
 
