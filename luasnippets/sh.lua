@@ -56,4 +56,19 @@ fi
 			{ delimiters = "@~" }
 		)
 	),
+
+  s(
+    { trig = ";bash", desc = "Setup basic bash scaffold" },
+    fmt(
+      [=[
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+@~
+]=],
+      { i(0) },
+			{ delimiters = "@~" }
+    )
+  ),
 }
