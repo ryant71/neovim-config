@@ -1,24 +1,26 @@
 vim.filetype.add {
   pattern = {
     ['.*'] = {
-      priority = math.huge,
-      function(path, bufnr)
-        local line1 = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, 1, false), "\n")
-        local line2 = table.concat(vim.api.nvim_buf_get_lines(bufnr, 1, 2, false), "\n")
-        if vim.regex([[^AWSTemplateFormatVersion]]):match_str(line1) or
-           vim.regex([[AWS::Serverless-2016-10-31]]):match_str(line1) then
+      function(_, bufnr)
+        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 2, false)
+        local line1, line2 = lines[1] or '', lines[2] or ''
+
+        if line1:match('^#!.*%f[%w]uv%s+run') then
+          return 'python'
+        end
+
+        local cfn_yaml = vim.regex([[^AWSTemplateFormatVersion\|AWS::Serverless-2016-10-31]])
+        local cfn_json = vim.regex([[["']AWSTemplateFormatVersion\|AWS::Serverless-2016-10-31]])
+        if cfn_yaml:match_str(line1) then
           return 'yaml.cloudformation'
-        elseif vim.regex([["']AWSTemplateFormatVersion]]):match_str(line1) or
-           vim.regex([["']AWSTemplateFormatVersion]]):match_str(line2) or
-           vim.regex([[AWS::Serverless-2016-10-31]]):match_str(line1) or
-           vim.regex([[AWS::Serverless-2016-10-31]]):match_str(line2) then
+        elseif cfn_json:match_str(line1) or cfn_json:match_str(line2) then
           return 'json.cloudformation'
         end
       end,
+      { priority = math.huge },
     },
   },
 }
-
 
 vim.lsp.config('cfn_lsp', {
   cmd = { vim.fn.expand('~/.local/bin/cfn-lsp-extra') },
